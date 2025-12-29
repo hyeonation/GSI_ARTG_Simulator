@@ -3,6 +3,10 @@ using UnityEngine;
 using System;
 using Filo;
 
+//<Summary>
+// 현재 개발중인 테스트 코드 사용 xx 
+//</Summary>
+/// 
 public class CraneController : BaseController
 {
     [Header("Laser Preset")]
@@ -151,12 +155,12 @@ public class CraneController : BaseController
         if (plcController.isConnected)
         {
             readSnapshot = plcController.GetReadDataSnapshot();
-            Trolley_OP(readSnapshot.sT_Vel);
-            Gantry_OP(readSnapshot.sG_Vel_Forward, readSnapshot.sG_Vel_Backward);
-            Hoist_OP(readSnapshot.sH_Vel);
-            MicroMotion_OP(readSnapshot.MM_1_Vel, readSnapshot.MM_2_Vel, readSnapshot.MM_3_Vel, readSnapshot.MM_4_Vel);
-            Feet_OP(readSnapshot._20FT, readSnapshot._40FT, readSnapshot._45FT);
-            TwistLock_OP(readSnapshot.TL_Lock, readSnapshot.TL_Unlock);
+            Trolley_OP(readSnapshot.Crane_Vel_sT_Vel);
+            Gantry_OP(readSnapshot.Crane_Vel_sG_Vel_Forward, readSnapshot.Crane_Vel_sG_Vel_Backward);
+            Hoist_OP(readSnapshot.Crane_Vel_sH_Vel);
+            MicroMotion_OP(readSnapshot.Micromotion_Vel_MM_1_Vel, readSnapshot.Micromotion_Vel_MM_2_Vel, readSnapshot.Micromotion_Vel_MM_3_Vel, readSnapshot.Micromotion_Vel_MM_4_Vel);
+            Feet_OP(readSnapshot.Spreader_Width_Cmd__20FT, readSnapshot.Spreader_Width_Cmd__40FT, readSnapshot.Spreader_Width_Cmd__45FT);
+            TwistLock_OP(readSnapshot.Twist_Lock_Cmd_TL_Lock, readSnapshot.Twist_Lock_Cmd_TL_Unlock);
             Landed();
         }
     }

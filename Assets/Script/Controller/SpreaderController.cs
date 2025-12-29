@@ -4,11 +4,13 @@ using UnityEngine;
 
 // landed 상태일때 lock을하면 컨테이너 잠금
 // unlocked 상태일때 unlock을하면 컨테이너 해제
-
+//<Summary>
+// 현재 개발중인 테스트 코드 사용 xx 
+//</Summary>
 
 public class SpreaderController : BaseController
 {
-    public Define.TWLockState CurrentTWLockState {get; private set;} = Define.TWLockState.Unlocked;
+    public Define.TWLockState CurrentTWLockState { get; private set; } = Define.TWLockState.Unlocked;
 
     private List<Landed> landedSensors;
     private FixedJoint currentJoint;
@@ -45,9 +47,9 @@ public class SpreaderController : BaseController
 
     public override bool Init()
     {
-        if( !base.Init())
+        if (!base.Init())
             return false;
-        landedSensors = new List<Landed>( GetComponentsInChildren<Landed>() );
+        landedSensors = new List<Landed>(GetComponentsInChildren<Landed>());
         Debug.Log($"SpreaderController Init : found {landedSensors.Count} landed sensors.");
 
         return true;
@@ -67,8 +69,8 @@ public class SpreaderController : BaseController
         {
             // 이미 잠겨있거나, 착지하지 않았다면 무시 (Fail-Safe)
             if (CurrentTWLockState == Define.TWLockState.Locked) return;
-            if (!IsLanded)  return; 
-                
+            if (!IsLanded) return;
+
 
             ExecuteLock();
         }
@@ -87,7 +89,7 @@ public class SpreaderController : BaseController
         isOperating = true;
         if (TargetContainer != null && IsLanded)
         {
-            
+
 
             CurrentTWLockState = Define.TWLockState.Locked;
             // TODO : TargetContainer와 스프레더를 연결하는 로직 추가  joint?

@@ -3876,6 +3876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efd6fa099a88e7549a3cf20e027dc98c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sensors: []
 --- !u!1 &1756196629906149506
 GameObject:
   m_ObjectHideFlags: 0
@@ -8472,11 +8473,10 @@ MonoBehaviour:
   useNoise: 1
   noiseIntensity: 0.02
   scanRate: 10
-  saveCoordinate: 1
   detectionLayer:
     serializedVersion: 2
     m_Bits: 769
-  drawPoints: 1
+  drawPoints: 0
   saveTrigger: 0
 --- !u!1 &3128244266849131530
 GameObject:
@@ -10057,11 +10057,10 @@ MonoBehaviour:
   useNoise: 1
   noiseIntensity: 0.02
   scanRate: 10
-  saveCoordinate: 1
   detectionLayer:
     serializedVersion: 2
     m_Bits: 769
-  drawPoints: 1
+  drawPoints: 0
   saveTrigger: 0
 --- !u!1 &3986813320736851650
 GameObject:
@@ -10694,11 +10693,10 @@ MonoBehaviour:
   useNoise: 1
   noiseIntensity: 0.02
   scanRate: 10
-  saveCoordinate: 1
   detectionLayer:
     serializedVersion: 2
     m_Bits: 769
-  drawPoints: 1
+  drawPoints: 0
   saveTrigger: 0
 --- !u!1 &4115073731719044238
 GameObject:
@@ -20235,11 +20233,10 @@ MonoBehaviour:
   useNoise: 1
   noiseIntensity: 0.02
   scanRate: 10
-  saveCoordinate: 1
   detectionLayer:
     serializedVersion: 2
     m_Bits: 769
-  drawPoints: 1
+  drawPoints: 0
   saveTrigger: 0
 --- !u!1 &8175494227320774376
 GameObject:

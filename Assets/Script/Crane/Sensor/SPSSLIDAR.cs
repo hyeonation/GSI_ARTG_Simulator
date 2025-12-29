@@ -20,11 +20,10 @@ public class SPSSLIDAR : MonoBehaviour
 
     [Header("Noise Settings")]
     public bool useNoise = true;
-    [Range(0f, 0.2f)] public float noiseIntensity = 0.02f; // 거리 대비 오차 비율
+    [Range(0f, 0.2f)] public float noiseIntensity = 0.02f;
 
     [Header("Sampling & Output")]
     public float scanRate = 10f;
-    public CoordinateSystem saveCoordinate = CoordinateSystem.Local;
     private float _lastScanTime;
 
     [Header("Collision & Performance")]
@@ -44,10 +43,8 @@ public class SPSSLIDAR : MonoBehaviour
     private Mesh _mesh;
     private int[] _indices;
 
-    // SPSSLIDAR 클래스 내부에 추가
     public NativeArray<float3> GetPoints() => _points;
     public int TotalPoints => _totalSteps;
-    public bool IsDataReady => _commands.IsCreated && !_isJobScheduled;
 
     void Awake()
     {
@@ -122,12 +119,12 @@ public class SPSSLIDAR : MonoBehaviour
             hits = _hits,
             commands = _commands,
             maxDistance = lidarMaxDistance_m,
-            points = _points,
             lidarOrigin = transform.position,
             lidarRotationInverse = math.inverse(transform.rotation),
             useNoise = useNoise,
             noiseIntensity = noiseIntensity,
-            seed = (uint)(Time.frameCount + 1)
+            seed = (uint)(Time.frameCount + 1),
+            points = _points
         };
 
         _jobHandle = collectJob.Schedule(_totalSteps, 64, _jobHandle);
@@ -140,7 +137,10 @@ public class SPSSLIDAR : MonoBehaviour
         _mesh.SetVertices(_points.Reinterpret<Vector3>());
         if (_mesh.GetIndexCount(0) != _totalSteps)
             _mesh.SetIndices(_indices, MeshTopology.Points, 0);
-        _mesh.bounds = new Bounds(Vector3.zero, Vector3.one * 2000f);
+
+        // World 좌표계일 경우 Bounds를 동적으로 계산하거나 매우 크게 잡아야 함
+
+        _mesh.bounds = new Bounds(Vector3.zero, Vector3.one * 1000f);
     }
 
     private void SaveData()
@@ -162,7 +162,7 @@ public class SPSSLIDAR : MonoBehaviour
                     sw.WriteLine("X,Y,Z");
                     foreach (var p in dataCopy) sw.WriteLine($"{p.x:F4},{p.y:F4},{p.z:F4}");
                 }
-                Debug.Log($"Saved: {path}");
+                Debug.Log($"<color=green>[LiDAR]</color> Saved : {path}");
             }
             finally { _isSaving = false; }
         });
@@ -209,6 +209,7 @@ public class SPSSLIDAR : MonoBehaviour
         public bool useNoise;
         public float noiseIntensity;
         public uint seed;
+        public CoordinateSystem coordSystem;
         public NativeArray<float3> points;
 
         public void Execute(int i)
@@ -218,15 +219,22 @@ public class SPSSLIDAR : MonoBehaviour
 
             if (useNoise)
             {
-                // Index와 Seed를 조합하여 고유한 난수 생성
                 var rand = new Unity.Mathematics.Random(seed + (uint)i);
-                // 거리에 비례하는 노이즈 적용 (가우시안 분포 근사)
                 float noise = rand.NextFloat(-1f, 1f) * noiseIntensity * (distance / maxDistance);
                 distance += noise;
             }
 
             float3 worldPos = (float3)commands[i].from + (dir * distance);
-            points[i] = math.mul(lidarRotationInverse, worldPos - lidarOrigin);
+
+            // saveCoordinate 설정에 따른 좌표 분기 처리
+            if (coordSystem == CoordinateSystem.Local)
+            {
+                points[i] = math.mul(lidarRotationInverse, worldPos - lidarOrigin);
+            }
+            else
+            {
+                points[i] = worldPos;
+            }
         }
     }
 }

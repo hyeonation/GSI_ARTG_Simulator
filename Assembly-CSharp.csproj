@@ -32,7 +32,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169;USG0001</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -41,7 +41,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169;USG0001</NoWarn>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <NoStandardLibraries>true</NoStandardLibraries>
@@ -144,6 +144,7 @@
     <Compile Include="Assets\Script\Controller\CraneController.cs" />
     <Compile Include="Assets\Script\Excel\CSVReader.cs" />
     <Compile Include="Assets\Script\UI\Setting\GameMode.cs" />
+    <Compile Include="Assets\Script\DataBase\CraneWritePlcData.cs" />
     <Compile Include="Assets\FiloCables\Scripts\Bodies\CableShape.cs" />
     <Compile Include="Assets\Script\Manager\PoolManager.cs" />
     <Compile Include="Assets\FiloCables\Scripts\CableSolver.cs" />

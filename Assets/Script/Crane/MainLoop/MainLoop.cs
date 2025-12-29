@@ -77,7 +77,6 @@ public class MainLoop : MonoBehaviour
                 Debug.Log("GM.listIP is null. Please check the GameManager settings.");
             }
         }
-
         //// 생성된 Crane 대수만큼 배열크기 설정
         // init var
         GM.InitVar();

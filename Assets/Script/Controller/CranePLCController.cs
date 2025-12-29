@@ -6,6 +6,10 @@ using System;
 using System.Runtime.InteropServices;
 using Unity.VisualScripting;
 
+//<Summary>
+// 현재 개발중인 테스트 코드 사용 xx 
+//</Summary>
+
 public class CranePLCController : PLCController
 {
     [Header("Debug Info")]
@@ -69,7 +73,7 @@ public class CranePLCController : PLCController
 
         PrintOffset(type, "GantryVel");
         PrintOffset(type, "Status");
-        PrintOffset(type, "_statusFlags"); // 변경된 필드명 확인
+        PrintOffset(type, "_statusFlags");
         PrintOffset(type, "GantryBPosX");
 
         Debug.Log("---------- [PLC Struct Alignment Check] End ----------");
