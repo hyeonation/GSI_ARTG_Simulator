@@ -44,7 +44,7 @@ public class DrawingCrane : BaseController
     public ContainerController container;
 
     [HideInInspector]
-    public bool landedContainer, landedFloor, locked;
+    public bool landed, landedFloor, locked;
     [HideInInspector]
     public float hoistPos, gantryLength;
 
@@ -52,7 +52,7 @@ public class DrawingCrane : BaseController
     const float target40ft = 3; // default
     const float target45ft = 3.75f; // 3.75m shift
     const float spreaderFeetVel = 3.3f / 23;    // 어떤 계산식이지?
-    const float landedHeight = 0.36f;   // spreader 바닥 landed 높이. flipper로 공중에 뜨기 때문.
+    // const float landedHeight = 0.36f;   // spreader 바닥 landed 높이. flipper로 공중에 뜨기 때문.
     float ftOPTarget = target40ft;  // default
     float ftOPTargetOld = target40ft;  // default
     int ftOPDir;
@@ -69,7 +69,7 @@ public class DrawingCrane : BaseController
 
 
 
-    bool landedContainerOld, landedFloorOld;
+    bool landedOld, landedFloorOld;
     private FixedJoint containerFixedJoint;
 
     public bool isSelectedCrane;
@@ -83,6 +83,7 @@ public class DrawingCrane : BaseController
     private bool cmdTwlLockOld = false, cmdTwlUnlockOld = false;
     protected short cmdCamIndex1, cmdCamIndex2, cmdCamIndex3, cmdCamIndex4;
     protected bool selected_Cam, panLeft, panRight, tiltUp, tiltDown, cw, ccw, zoomIn, zoomOut;
+
     private bool _ropeSlack;
 
     #region Camera Index Property
@@ -187,7 +188,7 @@ public class DrawingCrane : BaseController
         Hoist_OP();
         MicroMotion_OP();
         Feet_OP();
-        Landed();
+        Landed_OP();
         TwistLock_OP();
         PLZCamera_OP();
 
@@ -256,7 +257,7 @@ public class DrawingCrane : BaseController
 
 
 
-        craneData.WriteData.Landed = landedContainer;
+        craneData.WriteData.Landed = landed;
         craneData.WriteData.Rope_Slack = _ropeSlack;
         craneData.WriteData.Tw_Locked = locked;
         craneData.WriteData.Tw_Unlocked = !locked;
@@ -525,7 +526,7 @@ public class DrawingCrane : BaseController
     {
         // landedContainer == true 시 Container 체결
         // Lock. 반복실행 방지 코드 추가.
-        if (landedContainer && cmdTwlLock && (cmdTwlLockOld != cmdTwlLock))
+        if (landed && cmdTwlLock && (cmdTwlLockOld != cmdTwlLock))
         {
             Debug.Log("Lock");
 
@@ -557,6 +558,7 @@ public class DrawingCrane : BaseController
             cmdTwlUnlockOld = cmdTwlUnlock;
             cmdTwlLockOld = false;
             cmdTwlLock = false;
+            locked = false;
 
             // 컨테이너와 spreader 연결 해제
             Destroy(containerFixedJoint);
@@ -572,6 +574,7 @@ public class DrawingCrane : BaseController
 
             // 하단에 접촉된 오브젝트 가져오기
             GameObject contactedUnderObject = container.contactedUnderObject;
+
 
             if (contactedUnderObject == null) return;
 
@@ -597,57 +600,61 @@ public class DrawingCrane : BaseController
             {
                 // 필요한가?
             }
-
             container = null;
-            locked = false;
         }
     }
 
     // Landed 판단 후 Cable 늘어지는 효과 주는 부분?
-    void Landed()
+    void Landed_OP()
     {
-        int landedCount = 0;
+        // lock or unlock 
+        // landedSensor 
+        // container floor contact sensor
 
-        for (int j = 0; j < twlLand.Length; j++)
+        // unlock 상태에서는 twlLand의 landed sensor로 판단
+        if (locked == false)
         {
-            if (twlLand[j].GetComponent<Landed>().landed_sensor)
+            int landedCount = 0;
+
+            for (int j = 0; j < twlLand.Length; j++)
             {
-                landedCount++;
+                if (twlLand[j].GetComponent<Landed>().landed_sensor)
+                {
+                    landedCount++;
+                }
             }
+
+            // twlLand의 개수가 4개이므로, 모두 landed 되면 true
+            landed = landedCount == twlLand.Length;
         }
 
-        //// Landed 여부
+        // lock 된 상태에서는 컨테이너의 landed 상태로 판단
+        else
+        {
+            landed = container.contactedUnderObject != null;
+        }
 
-        // twlLand의 개수가 4개이므로, 모두 landed 되면 true
-        landedContainer = landedCount == twlLand.Length;
-
-        // spreader position y값이 landedHeight보다 낮으면 spreader 바닥이 지면에 닿았다고 판단
-        landedFloor = spreader.position.y < landedHeight;
-
+        /// landed effect
         // Landed 값 바뀌었을 때
-        if ((landedContainer != landedContainerOld) || (landedFloor != landedFloorOld))
+        if (landed != landedOld)
         {
             // update value
-            landedContainerOld = landedContainer;
-            landedFloorOld = landedFloor;
+            landedOld = landed;
 
             // 하나라도 landed 되면 cable 늘어짐 효과 주기
-            if (landedContainer || landedFloor)
+            if (landed)
             {
                 for (int j = 0; j < cables.Length; j++)
-                {
                     cables[j].GetComponent<Cable>().loosenessScale = 1;
-                }
             }
 
             else
             {
                 for (int j = 0; j < cables.Length; j++)
-                {
                     cables[j].GetComponent<Cable>().loosenessScale = 0;
-                }
             }
         }
+        Debug.Log($"Landed: {landed} ");
     }
 
     // Crane selected change

@@ -106,7 +106,7 @@ public class DrawingQC : DrawingCrane
 
         //var con_force = 0.0065f;
         // TODO 임시 local variable 만들어야함
-        force = (landedContainer && !GM.arrayCraneDataBase[iSelf].ReadData.twlStatus.locked) ? 0 : force;
+        force = (landed && !GM.arrayCraneDataBase[iSelf].ReadData.twlStatus.locked) ? 0 : force;
         //con_force = (Container_inf[i].GetComponent<Container_landed>().Con_landed[i]) ? 0 : con_force;
 
         // disc rotation
@@ -118,7 +118,7 @@ public class DrawingQC : DrawingCrane
         if (speed < 0)
         {
             spreader.Translate(Vector3.up * Time.deltaTime * speed * force);
-            hoistPos = landedContainer ? hoistPos + (speed / 130) * Time.deltaTime : spreader.position.y;    // 착지하면 spreader는 멈추지만 wire length는 계속 증가
+            hoistPos = landed ? hoistPos + (speed / 130) * Time.deltaTime : spreader.position.y;    // 착지하면 spreader는 멈추지만 wire length는 계속 증가
             if (locked)
             {
                 // container.transform.Translate(Vector3.up * Time.deltaTime * speed * force);
@@ -128,7 +128,7 @@ public class DrawingQC : DrawingCrane
         {
             // Container_inf[i].transform.Translate(Vector3.up * Time.deltaTime * 0);
             // spreader.Translate(Vector3.up * Time.deltaTime * 0);
-            hoistPos = (landedContainer) ? hoistPos + (speed / 130) * Time.deltaTime : spreader.position.y;
+            hoistPos = (landed) ? hoistPos + (speed / 130) * Time.deltaTime : spreader.position.y;
 
         }
     }
