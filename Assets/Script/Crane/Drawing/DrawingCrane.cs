@@ -187,8 +187,8 @@ public class DrawingCrane : BaseController
         Hoist_OP();
         MicroMotion_OP();
         Feet_OP();
-        TwistLock_OP();
         Landed();
+        TwistLock_OP();
         PLZCamera_OP();
 
         // write to PLC
@@ -455,13 +455,13 @@ public class DrawingCrane : BaseController
             // spreader를 직접 이동시켜 흔들림이 보정
             Vector3 moveStep = Vector3.up * Time.fixedDeltaTime * speed * force;
             rbSpreader.MovePosition(rbSpreader.position + moveStep);
-            _ropeSlack = true;
+            // _ropeSlack = true;
         }
         else
         {
             // 계속 누르다가 올려올려 하면 살짝 통하고 튕김. 점프?
 
-            _ropeSlack = false;
+            // _ropeSlack = false;
         }
     }
 
@@ -523,8 +523,9 @@ public class DrawingCrane : BaseController
 
     void TwistLock_OP()
     {
+        // landedContainer == true 시 Container 체결
         // Lock. 반복실행 방지 코드 추가.
-        if (cmdTwlLock && (cmdTwlLockOld != cmdTwlLock))
+        if (landedContainer && cmdTwlLock && (cmdTwlLockOld != cmdTwlLock))
         {
             Debug.Log("Lock");
 
@@ -533,23 +534,20 @@ public class DrawingCrane : BaseController
             cmdTwlUnlockOld = false;
             cmdTwlUnlock = false;
 
-            // landedContainer == true 시 Container 체결
-            if (landedContainer)
-            {
-                container = twlLand[0].GetComponent<Landed>().containerController;   // 컨테이너 정보 가져오기
-                Debug.Log($"Container: {container.name}");
+            container = twlLand[0].GetComponent<Landed>().containerController;   // 컨테이너 정보 가져오기
+            Debug.Log($"Container: {container.name}");
 
-                container.transform.SetParent(spreader.transform);
-                container.AddComponent<FixedJoint>(); // FixedJoint 추가
-                containerFixedJoint = container.GetComponent<FixedJoint>(); // FixedJoint 변수에 저장
-                containerFixedJoint.connectedBody = spreader.GetComponent<Rigidbody>(); // spreader와 연결
-                containerFixedJoint.breakForce = Mathf.Infinity; // 충분히 큰 값
-                containerFixedJoint.breakTorque = Mathf.Infinity; // 충분히 큰 값
-                containerFixedJoint.enableCollision = false;
+            container.transform.SetParent(spreader.transform);
+            container.AddComponent<FixedJoint>(); // FixedJoint 추가
+            containerFixedJoint = container.GetComponent<FixedJoint>(); // FixedJoint 변수에 저장
+            containerFixedJoint.connectedBody = spreader.GetComponent<Rigidbody>(); // spreader와 연결
+            containerFixedJoint.breakForce = Mathf.Infinity; // 충분히 큰 값
+            containerFixedJoint.breakTorque = Mathf.Infinity; // 충분히 큰 값
+            containerFixedJoint.enableCollision = false;
 
-                // 소유주 변경
-                container.currentHolder = Define.ContainerHolderType.Spreader;
-            }
+            // 소유주 변경
+            container.currentHolder = Define.ContainerHolderType.Spreader;
+            locked = true;
         }
 
         else if (cmdTwlUnlock && (cmdTwlUnlockOld != cmdTwlUnlock))
@@ -580,7 +578,7 @@ public class DrawingCrane : BaseController
             //truck일경우 트럭을 부모로 설정
             if (contactedUnderObject.TryGetComponent<TruckController>(out var truck))
             {
-                //TODO : 샤시에 안정적으로 올려졌을경우만 트럭으로 넘겨주는 로직추가 필요
+                //TODO : 샤시에 안정적으로 올려졌을경우만 트럭으로 넘겨주는 로직추가??
 
                 // Truck으로 컨테이너 옮기고 stackprofile갱신
                 container.gameObject.transform.SetParent(truck.transform);
@@ -601,7 +599,7 @@ public class DrawingCrane : BaseController
             }
 
             container = null;
-
+            locked = false;
         }
     }
 

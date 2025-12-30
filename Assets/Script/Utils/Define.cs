@@ -77,7 +77,7 @@ public class Define
 
     // RMGC offset values
     public const float OffsetRMGCGantryZ = 2581.3f;
-    public const float OffsetRMGCTrolleyX = 14.1f;
+    public const float OffsetRMGCTrolleyX = 14.183f;
     public const float OffsetRMGCHoistY = 0f;
 
     public static readonly Rect[] screenRects = new Rect[]

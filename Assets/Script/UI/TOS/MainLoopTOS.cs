@@ -86,6 +86,7 @@ public class MainLoopTOS : UI_Base
         Btn_Home,
         Btn_TruckControl,
         Btn_CameraControl,
+        Btn_CraneControl,
 
     }
 
@@ -118,6 +119,10 @@ public class MainLoopTOS : UI_Base
         GetButton((int)Buttons.Btn_TruckControl).onClick.AddListener(onClickTruckControl);
         GetButton((int)Buttons.Btn_CameraControl).onClick.AddListener(onClickCameraControl);
         GetButton((int)Buttons.Btn_Home).onClick.AddListener(onClickHome);
+        GetButton((int)Buttons.Btn_CraneControl).onClick.AddListener(() =>
+        {
+            Managers.UI.ShowPopupUI<UI_CraneControlPopup>();
+        });
 
         #endregion 
         // Init

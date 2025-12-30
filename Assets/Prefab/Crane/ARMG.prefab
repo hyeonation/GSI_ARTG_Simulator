@@ -458,7 +458,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 7
@@ -2555,7 +2555,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 2
@@ -3509,7 +3509,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 4
@@ -3837,7 +3837,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 795186276035712490}
-  - component: {fileID: 173844652824852926}
+  - component: {fileID: 8947507053960611408}
   m_Layer: 0
   m_Name: SPSS
   m_TagString: Untagged
@@ -3862,9 +3862,10 @@ Transform:
   - {fileID: 3929738952328773230}
   - {fileID: 1739557523103327451}
   - {fileID: 3011296513573218913}
+  - {fileID: 3948030928574984107}
   m_Father: {fileID: 1237699319232307319}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &173844652824852926
+--- !u!114 &8947507053960611408
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3876,7 +3877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efd6fa099a88e7549a3cf20e027dc98c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensors: []
+  lidarList: []
 --- !u!1 &1756196629906149506
 GameObject:
   m_ObjectHideFlags: 0
@@ -4262,7 +4263,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 2
@@ -4961,7 +4962,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 4
@@ -5280,7 +5281,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -5422,7 +5423,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 4
@@ -6682,8 +6683,6 @@ GameObject:
   - component: {fileID: 3929738952328773230}
   - component: {fileID: 8362187365905704700}
   - component: {fileID: 4432075618726350235}
-  - component: {fileID: 1218660067335798392}
-  - component: {fileID: 7861582348091657491}
   m_Layer: 0
   m_Name: Lidar1
   m_TagString: Untagged
@@ -6699,14 +6698,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2733409665493757569}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: 1.5, y: 0, z: 0}
   m_LocalScale: {x: 0.050000068, y: 0.050000068, z: 0.050000023}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7592303720059903852}
   m_Father: {fileID: 795186276035712490}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -90}
 --- !u!33 &8362187365905704700
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -6757,46 +6756,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1218660067335798392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2733409665493757569}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8076531d3f4f6341bf73ad92f208d3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scanOffset: {x: 0, y: 0, z: 0}
-  saveToFile: 0
-  fileName: LiDAR_PointCloud.txt
-  scanDelay: 0
-  run: 1
---- !u!114 &7861582348091657491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2733409665493757569}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad82046ae56ebb342b5534ebf4685d35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scanOffset: {x: 0, y: 0, z: 0}
-  innerloopBatchCount: 128
-  minCommandsPerJob: 256
-  debugDraw: 0
-  debugDrawEveryNFrames: 10
-  fillManagedListForDebug: 0
-  saveToFile: 0
-  fileName: LiDAR_PointCloud.txt
-  trolley: {fileID: 1237699319232307319}
-  spreader: {fileID: 1961639432129011920}
-  pointCloud: []
 --- !u!1 &2744938806166604042
 GameObject:
   m_ObjectHideFlags: 0
@@ -7241,7 +7200,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 2
@@ -8258,7 +8217,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 4
@@ -8381,7 +8340,7 @@ GameObject:
   - component: {fileID: 7178926696347530136}
   - component: {fileID: 5220101725786990880}
   - component: {fileID: 266700840458942306}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LidarTest2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8396,13 +8355,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3116044650680909720}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1739557523103327451}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7178926696347530136
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8470,14 +8429,10 @@ MonoBehaviour:
   lidarResHorizontal_deg: 0.33
   lidarResVertical_deg: 0.175
   lidarMaxDistance_m: 100
-  useNoise: 1
-  noiseIntensity: 0.02
-  scanRate: 10
-  detectionLayer:
-    serializedVersion: 2
-    m_Bits: 769
-  drawPoints: 0
-  saveTrigger: 0
+  axisRotationOffset_deg: 0
+  useROI: 1
+  localRoiMin: {x: -100, y: -100, z: -100}
+  localRoiMax: {x: 100, y: 100, z: 100}
 --- !u!1 &3128244266849131530
 GameObject:
   m_ObjectHideFlags: 0
@@ -9965,7 +9920,7 @@ GameObject:
   - component: {fileID: 2510847915834116943}
   - component: {fileID: 7891923378972474556}
   - component: {fileID: 2040962879250777666}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LidarTest0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9980,13 +9935,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3951902160180334069}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2354280358261519609}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2510847915834116943
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10054,14 +10009,10 @@ MonoBehaviour:
   lidarResHorizontal_deg: 0.33
   lidarResVertical_deg: 0.175
   lidarMaxDistance_m: 100
-  useNoise: 1
-  noiseIntensity: 0.02
-  scanRate: 10
-  detectionLayer:
-    serializedVersion: 2
-    m_Bits: 769
-  drawPoints: 0
-  saveTrigger: 0
+  axisRotationOffset_deg: 0
+  useROI: 1
+  localRoiMin: {x: -100, y: -100, z: -100}
+  localRoiMax: {x: 100, y: 100, z: 100}
 --- !u!1 &3986813320736851650
 GameObject:
   m_ObjectHideFlags: 0
@@ -10601,7 +10552,7 @@ GameObject:
   - component: {fileID: 7019959554282666873}
   - component: {fileID: 8160215127079812696}
   - component: {fileID: 4009572500354491233}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LidarTest1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10616,13 +10567,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4081821272406112214}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3929738952328773230}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7019959554282666873
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -10690,14 +10641,10 @@ MonoBehaviour:
   lidarResHorizontal_deg: 0.33
   lidarResVertical_deg: 0.175
   lidarMaxDistance_m: 100
-  useNoise: 1
-  noiseIntensity: 0.02
-  scanRate: 10
-  detectionLayer:
-    serializedVersion: 2
-    m_Bits: 769
-  drawPoints: 0
-  saveTrigger: 0
+  axisRotationOffset_deg: 0
+  useROI: 1
+  localRoiMin: {x: -100, y: -100, z: -100}
+  localRoiMax: {x: 100, y: 100, z: 100}
 --- !u!1 &4115073731719044238
 GameObject:
   m_ObjectHideFlags: 0
@@ -11065,7 +11012,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -11807,7 +11754,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -15812,7 +15759,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 4
@@ -15912,7 +15859,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 4
@@ -17299,7 +17246,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -17441,7 +17388,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 4
@@ -17729,8 +17676,6 @@ GameObject:
   - component: {fileID: 1739557523103327451}
   - component: {fileID: 6617847479550336310}
   - component: {fileID: 9034270368346117635}
-  - component: {fileID: 3432939636034932422}
-  - component: {fileID: 7587695677681287584}
   m_Layer: 0
   m_Name: Lidar2
   m_TagString: Untagged
@@ -17746,14 +17691,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7075139034007511156}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: -0.5}
+  m_LocalRotation: {x: 0, y: 0.70710677, z: -0.70710677, w: 0}
   m_LocalPosition: {x: -1.5, y: 0, z: -2.5}
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4215582718527172626}
   m_Father: {fileID: 795186276035712490}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 90, z: -90}
 --- !u!33 &6617847479550336310
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -17804,46 +17749,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3432939636034932422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7075139034007511156}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8076531d3f4f6341bf73ad92f208d3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scanOffset: {x: 0, y: 0, z: 0}
-  saveToFile: 0
-  fileName: LiDAR_PointCloud.txt
-  scanDelay: 0
-  run: 1
---- !u!114 &7587695677681287584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7075139034007511156}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad82046ae56ebb342b5534ebf4685d35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scanOffset: {x: 0, y: 0, z: 0}
-  innerloopBatchCount: 128
-  minCommandsPerJob: 256
-  debugDraw: 0
-  debugDrawEveryNFrames: 10
-  fillManagedListForDebug: 0
-  saveToFile: 0
-  fileName: LiDAR_PointCloud.txt
-  trolley: {fileID: 1237699319232307319}
-  spreader: {fileID: 1961639432129011920}
-  pointCloud: []
 --- !u!1 &7115680471155912452
 GameObject:
   m_ObjectHideFlags: 0
@@ -18522,7 +18427,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 4
@@ -20141,7 +20046,7 @@ GameObject:
   - component: {fileID: 781033625393688541}
   - component: {fileID: 7053616341842226461}
   - component: {fileID: 5262583466049492844}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LidarTest3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20156,13 +20061,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8153552165701320083}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3011296513573218913}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &781033625393688541
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -20230,14 +20135,10 @@ MonoBehaviour:
   lidarResHorizontal_deg: 0.33
   lidarResVertical_deg: 0.175
   lidarMaxDistance_m: 100
-  useNoise: 1
-  noiseIntensity: 0.02
-  scanRate: 10
-  detectionLayer:
-    serializedVersion: 2
-    m_Bits: 769
-  drawPoints: 0
-  saveTrigger: 0
+  axisRotationOffset_deg: 0
+  useROI: 1
+  localRoiMin: {x: -100, y: -100, z: -100}
+  localRoiMax: {x: 100, y: 100, z: 100}
 --- !u!1 &8175494227320774376
 GameObject:
   m_ObjectHideFlags: 0
@@ -20583,8 +20484,6 @@ GameObject:
   - component: {fileID: 2354280358261519609}
   - component: {fileID: 4867833974459233611}
   - component: {fileID: 4177220468097982616}
-  - component: {fileID: 8569403066917589780}
-  - component: {fileID: 3961243566298439726}
   m_Layer: 0
   m_Name: Lidar0
   m_TagString: Untagged
@@ -20600,14 +20499,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8273917853588729083}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: -0.5}
+  m_LocalRotation: {x: 0, y: 0.70710677, z: -0.70710677, w: 0}
   m_LocalPosition: {x: 1.5, y: 0, z: 2.5}
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3256487143616999275}
   m_Father: {fileID: 795186276035712490}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 90, z: -90}
 --- !u!33 &4867833974459233611
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -20658,46 +20557,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &8569403066917589780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8273917853588729083}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8076531d3f4f6341bf73ad92f208d3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scanOffset: {x: 0, y: 0, z: 0}
-  saveToFile: 0
-  fileName: LiDAR_PointCloud.txt
-  scanDelay: 0
-  run: 1
---- !u!114 &3961243566298439726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8273917853588729083}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad82046ae56ebb342b5534ebf4685d35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scanOffset: {x: 0, y: 0, z: 0}
-  innerloopBatchCount: 128
-  minCommandsPerJob: 64
-  debugDraw: 0
-  debugDrawEveryNFrames: 10
-  fillManagedListForDebug: 0
-  saveToFile: 0
-  fileName: LiDAR_PointCloud.txt
-  trolley: {fileID: 1237699319232307319}
-  spreader: {fileID: 1961639432129011920}
-  pointCloud: []
 --- !u!1 &8276416473186237395
 GameObject:
   m_ObjectHideFlags: 0
@@ -20770,7 +20629,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 4
@@ -21081,8 +20940,6 @@ GameObject:
   - component: {fileID: 3011296513573218913}
   - component: {fileID: 8158462981989168911}
   - component: {fileID: 3000251590462458843}
-  - component: {fileID: 6497267906130797049}
-  - component: {fileID: 2462764287774123679}
   m_Layer: 0
   m_Name: Lidar3
   m_TagString: Untagged
@@ -21098,14 +20955,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8529643695044075276}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
   m_LocalPosition: {x: -1.5, y: 0, z: 0}
   m_LocalScale: {x: 0.050000068, y: 0.050000068, z: 0.050000023}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6318593732645673224}
   m_Father: {fileID: 795186276035712490}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -90}
 --- !u!33 &8158462981989168911
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -21156,46 +21013,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6497267906130797049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8529643695044075276}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8076531d3f4f6341bf73ad92f208d3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scanOffset: {x: 0, y: 0, z: 0}
-  saveToFile: 0
-  fileName: LiDAR_PointCloud.txt
-  scanDelay: 0
-  run: 1
---- !u!114 &2462764287774123679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8529643695044075276}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad82046ae56ebb342b5534ebf4685d35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scanOffset: {x: 0, y: 0, z: 0}
-  innerloopBatchCount: 128
-  minCommandsPerJob: 256
-  debugDraw: 0
-  debugDrawEveryNFrames: 10
-  fillManagedListForDebug: 0
-  saveToFile: 0
-  fileName: LiDAR_PointCloud.txt
-  trolley: {fileID: 1237699319232307319}
-  spreader: {fileID: 1961639432129011920}
-  pointCloud: []
 --- !u!1 &8529773018671088797
 GameObject:
   m_ObjectHideFlags: 0
@@ -21761,6 +21578,89 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8678823145569952518, guid: 3af7b9d753af1294ba52e70f0fec4ce0, type: 3}
+--- !u!1 &8729844777930709750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3948030928574984107}
+  - component: {fileID: 1117365997783206168}
+  m_Layer: 0
+  m_Name: LIDARCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3948030928574984107
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8729844777930709750}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 20, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 795186276035712490}
+  m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
+--- !u!20 &1117365997783206168
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8729844777930709750}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 100
+  field of view: 60
+  orthographic: 1
+  orthographic size: 15
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 3
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
 --- !u!1 &8757536353680320596
 GameObject:
   m_ObjectHideFlags: 0
@@ -21833,7 +21733,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2039
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 2
@@ -22733,7 +22633,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9208198230503535001}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e82b68e3ee58eef43aad0577e668fb31, type: 3}
   m_Name: 

@@ -147,6 +147,7 @@
     <Compile Include="Assets\Script\DataBase\CraneWritePlcData.cs" />
     <Compile Include="Assets\FiloCables\Scripts\Bodies\CableShape.cs" />
     <Compile Include="Assets\Script\Manager\PoolManager.cs" />
+    <Compile Include="Assets\Script\UI\UI_Popup\UI_CraneControlPopup.cs" />
     <Compile Include="Assets\FiloCables\Scripts\CableSolver.cs" />
     <Compile Include="Assets\Script\Crane\MainLoop\MainLoopARTG.cs" />
     <Compile Include="Assets\Script\Manager\ObjectManager.cs" />
